@@ -1,0 +1,19 @@
+<% if User.find(session[:user_id]).admin == false %>
+<% @attractions.each do |a| %>
+<%= link_to("Go on #{a.name}", attraction_path(a)) %>
+<% end %>
+<% end %>
+<br/>
+<br/>
+<br/>
+
+
+<% if User.find(session[:user_id]).admin == true %>
+<%= "You Can Also Create New Attraction, since you are an ADMIN boss!" %>
+<%= link_to("New Attraction", new_attraction_path) %>
+
+<% @attractions.each do |a| %>
+<%= link_to("Show #{a.name}", attraction_path(a)) %>
+<% end %>
+
+<% end %>
